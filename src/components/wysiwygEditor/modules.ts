@@ -1,4 +1,4 @@
-export const modules = {
+ const modules = {
   toolbar:[
       [{ header: [1, 2, 3, false] }],
       [{ size: ["small", false, "large", "huge"] }],
@@ -18,6 +18,7 @@ export const modules = {
     modules: ["Resize", "DisplaySize"]
   }
 };
+export default modules
 
 // export const formats = [
 //   "header",

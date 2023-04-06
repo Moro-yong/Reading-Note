@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { ImageResize } from "quill-image-resize-module-ts";
-import {modules} from "./modules";
+import modules from "./modules";
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -32,7 +32,7 @@ const EditorComponent = () => {
             const url = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcaT8C5%2FbtrwDO3sbDf%2Fx5Pf5TRKkbZuCpFE5sEIeK%2Fimg.png"
             
             if (range !== null || range !== undefined) {
-              let quill = quillRef.current?.getEditor();
+              const quill = quillRef.current?.getEditor();
               const image = `<img src=${url} alt="이미지" width="30%"/>`
               quill?.clipboard.dangerouslyPasteHTML(rangeNum, image);
             }
