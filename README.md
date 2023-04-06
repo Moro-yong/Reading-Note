@@ -4,3 +4,4 @@
 
 - typescript
 - react-quill
+- quill-image-resize-module-ts
