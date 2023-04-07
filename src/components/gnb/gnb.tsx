@@ -7,7 +7,7 @@ import user from '../../asset/image/user.png';
 export default function Navigation() {
   const navigate = useNavigate();
   return (
-    <nav className="h-16 px-20 flex items-center justify-between">
+    <nav className="w-full h-16 px-20 flex items-center justify-between">
       <div>ham</div>
       <img src={logo} alt="logo" width={'38rem'} />
       <div className="flex">

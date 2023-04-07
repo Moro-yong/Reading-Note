@@ -2,18 +2,16 @@ import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 export default function SwiperComponent() {
   SwiperCore.use([Pagination, Autoplay]);
 
   return (
-    <div>
+    <div className="w-full">
       <Swiper
         modules={[Pagination]}
-        spaceBetween={40}
+        spaceBetween={0}
         slidesPerView={1}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000 }}

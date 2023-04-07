@@ -9,7 +9,7 @@ export default function newPostSwiper() {
   SwiperCore.use([Navigation]);
 
   return (
-    <div className="max-w-5xl w-full h-full">
+    <div>
       <Swiper
         modules={[Navigation]}
         spaceBetween={40}

@@ -3,7 +3,7 @@ import sprout from '../../asset/image/sprout.png';
 
 export default function User() {
   return (
-    <section className="max-w-5xl w-full flex border-b mb-4 pb-4">
+    <section className="flex border-b mb-4 pb-4">
       <div className="flex flex-1 items-center justify-center">
         <div className="relative w-24 h-24">
           <img src={user} alt="profile" />
