@@ -1,12 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import WysiwygEditor from '../components/wysiwygEditor/wysiwyg';
-import Swiper from '../components/swiper/swiper';
+import MainPage from '../pages/Main';
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<WysiwygEditor />}></Route>
-      <Route path="/spr" element={<Swiper />}></Route>
+      <Route path="/" element={<MainPage />}></Route>
     </Routes>
   );
 }
