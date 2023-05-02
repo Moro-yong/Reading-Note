@@ -1,28 +1,33 @@
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useAuthContext } from '../context/authContext';
 
 export default function SwiperComponent() {
   SwiperCore.use([Pagination, Autoplay]);
+  const { user } = useAuthContext();
 
   return (
-    <div className="w-full">
-      <Swiper
-        modules={[Pagination]}
-        spaceBetween={0}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }}
-        className="h-96">
-        {swiperImage.map((swiper, index) => (
-          <SwiperSlide key={index}>
-            <img src={swiper} alt="img" className="w-full" />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <>
+      {!user && (
+        <div className="w-full">
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={0}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000 }}
+            className="h-96">
+            {swiperImage.map((swiper, index) => (
+              <SwiperSlide key={index}>
+                <img src={swiper} alt="img" className="w-full" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
+    </>
   );
 }
 

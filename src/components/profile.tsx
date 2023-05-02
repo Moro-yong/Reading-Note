@@ -1,38 +1,13 @@
-import { useEffect, useState } from 'react';
-import { onUserStateChange } from '../../api/firebase';
-import { User } from 'firebase/auth';
 import { TiTags, TiVideoOutline, TiUserAdd, TiTicket } from 'react-icons/ti';
-
-const rank = [
-  {
-    icon: TiTags,
-  },
-  {
-    icon: TiVideoOutline,
-  },
-  {
-    icon: TiUserAdd,
-  },
-  {
-    icon: TiTicket,
-  },
-];
+import { useAuthContext } from '../context/authContext';
 
 export default function ProfileComponent() {
-  const [user, setUser] = useState<User | null>(null);
-  console.log(user);
-
-  useEffect(() => {
-    onUserStateChange((user) => {
-      setUser(user);
-    });
-  }, []);
-
+  const { user } = useAuthContext();
   return (
-    <section className="w-full">
+    <>
       {user && (
-        <div className="py-20">
-          <section className="flex">
+        <section className="w-full my-20">
+          <div className="flex">
             <img
               src={user.photoURL as string}
               alt="user profile image"
@@ -45,8 +20,8 @@ export default function ProfileComponent() {
               <h3 className="font-semibold ">{user.email}</h3>
               <p className="text-sm">this space is inter</p>
             </div>
-          </section>
-          <section className="flex gap-6">
+          </div>
+          <div className="flex gap-6">
             {rank.map((item, index) => (
               <div
                 key={index}
@@ -62,9 +37,24 @@ export default function ProfileComponent() {
                 <item.icon className="w-20 h-20" />
               </div>
             ))}
-          </section>
-        </div>
+          </div>
+        </section>
       )}
-    </section>
+    </>
   );
 }
+
+const rank = [
+  {
+    icon: TiTags,
+  },
+  {
+    icon: TiVideoOutline,
+  },
+  {
+    icon: TiUserAdd,
+  },
+  {
+    icon: TiTicket,
+  },
+];

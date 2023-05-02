@@ -1,6 +1,6 @@
 import SwiperCore from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { subTitle, title, swiperImage } from '../../../constants';
+import { subTitle, title, swiperImage } from '../../constants';
 
 import 'swiper/css';
 import 'swiper/css/pagination';

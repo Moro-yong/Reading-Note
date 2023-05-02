@@ -1,16 +1,10 @@
-import { useEffect, useState } from 'react';
-import { login, logout, onUserStateChange } from '../../api/firebase';
-import { User } from 'firebase/auth';
+import { useState } from 'react';
+import { useAuthContext, AuthContext } from '../context/authContext';
 
 export default function BasicModal() {
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    onUserStateChange((user) => {
-      setUser(user);
-    });
-  }, []);
+  const auth = useAuthContext();
+  const { user, login, logout } = { ...auth } as AuthContext;
 
   const handleOpen = () => {
     setOpen((pre) => !pre);

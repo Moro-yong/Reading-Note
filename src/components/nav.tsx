@@ -1,10 +1,11 @@
-import React from 'react';
-import BasicModal from '../modal/basicModal';
+import BasicModal from './basicModal';
 import { DiGithubAlt } from 'react-icons/di';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../context/authContext';
 
 export default function NavigationComponent() {
   const navigate = useNavigate();
+  const { user } = useAuthContext();
   return (
     <header className="justify-center w-full border-b">
       <nav className="flex my-4 mx-auto max-w-7xl">
@@ -21,9 +22,16 @@ export default function NavigationComponent() {
           <li className="text-xl font-medium">
             <button onClick={() => navigate('/posts')}>posts</button>
           </li>
-          <li className="text-xl font-medium">
-            <button onClick={() => navigate('/write')}>write</button>
-          </li>
+          {user && (
+            <li className="text-xl font-medium">
+              <button onClick={() => navigate('/write')}>write</button>
+            </li>
+          )}
+          {user?.isAdmin && (
+            <li className="text-xl font-medium">
+              <button onClick={() => navigate('/admin')}>admin</button>
+            </li>
+          )}
         </ul>
         <div className="flex flex-1 gap-3 justify-end items-center">
           <BasicModal />

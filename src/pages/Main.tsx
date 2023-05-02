@@ -1,12 +1,8 @@
-import Layout from '../components/layout';
-import Navigation from '../components/nav/nav';
-import Profile from '../components/profile/profile';
-import BookList from '../components/recommendedBook/recomBook';
-import RecentlyPosts from '../components/recentlyPosts/recentlyPosts';
-import Swiper from '../components/swiper/swiper';
-import UserMata from '../components/userMeta/userMeta';
-import LatestPosts from '../components/latestPosts/latestPosts';
-import WriterList from '../components/recommendedWriter/recomWriter';
+import Layout from './Layout';
+import Navigation from '../components/nav';
+import Profile from '../components/profile';
+import BookList from '../components/recomBook';
+import RecentlyPosts from '../components/recentlyPosts';
 
 export default function MainPage() {
   return (
