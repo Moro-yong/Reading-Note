@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
-import { initializeApp } from "firebase/app";
+import { Dispatch, SetStateAction } from 'react';
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithPopup,
@@ -7,14 +7,14 @@ import {
   onAuthStateChanged,
   signOut,
   User,
-} from "firebase/auth";
-import { getDatabase, ref, onValue, get, child } from "firebase/database";
+} from 'firebase/auth';
+import { getDatabase, ref, onValue, get, child } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PRODJECT_ID,
+  apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_APP_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_APP_FIREBASE_PRODJECT_ID,
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -40,7 +40,7 @@ export function onUserStateChange(callback: DispatchType) {
 }
 
 async function adminUser(user: User) {
-  return get(child(dbRef, "admins")).then((snapshot) => {
+  return get(child(dbRef, 'admins')).then((snapshot) => {
     if (snapshot.exists()) {
       const admins = snapshot.val();
       const isAdmin = admins.includes(user.uid);

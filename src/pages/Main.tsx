@@ -1,4 +1,4 @@
-import Navigation from '../components/gnb/gnb';
+import Navigation from '../components/nav/nav';
 import Swiper from '../components/swiper/swiper';
 import UserMata from '../components/userMeta/userMeta';
 import LatestPosts from '../components/latestPosts/latestPosts';
