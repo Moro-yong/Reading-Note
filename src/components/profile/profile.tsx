@@ -29,7 +29,7 @@ export default function ProfileComponent() {
   }, []);
 
   return (
-    <>
+    <section className="w-full">
       {user && (
         <div className="py-20">
           <section className="flex">
@@ -65,6 +65,6 @@ export default function ProfileComponent() {
           </section>
         </div>
       )}
-    </>
+    </section>
   );
 }
