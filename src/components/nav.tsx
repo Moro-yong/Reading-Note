@@ -7,7 +7,7 @@ export default function NavigationComponent() {
   const navigate = useNavigate();
   const { user } = useAuthContext();
   return (
-    <header className="justify-center w-full border-b">
+    <header className="w-full border-b">
       <nav className="flex my-4 mx-auto max-w-7xl">
         <button
           onClick={() => navigate('/')}

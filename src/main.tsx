@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { AuthContextPorvider } from './context/authContext';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ProtectedRoute from './router/ProtectedRoute';
 import MainPage from './pages/Main';
 import App from './App';
 import PostsPage from './pages/Posts';
+import AdminPage from './pages/Admin';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +22,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/posts',
-        element: <PostsPage />,
+        element: (
+          <ProtectedRoute>
+            <PostsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/admin',
+        element: (
+          <ProtectedRoute admin>
+            <AdminPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -28,8 +42,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <AuthContextPorvider>
-      <RouterProvider router={router} />
-    </AuthContextPorvider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );

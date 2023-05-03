@@ -3,8 +3,7 @@ import { useAuthContext, AuthContext } from '../context/authContext';
 
 export default function BasicModal() {
   const [open, setOpen] = useState(false);
-  const auth = useAuthContext();
-  const { user, login, logout } = { ...auth } as AuthContext;
+  const { user, login, logout } = useAuthContext();
 
   const handleOpen = () => {
     setOpen((pre) => !pre);

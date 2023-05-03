@@ -8,7 +8,7 @@ import {
   signOut,
   User,
 } from 'firebase/auth';
-import { getDatabase, ref, onValue, get, child } from 'firebase/database';
+import { getDatabase, ref, get, child } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
@@ -21,13 +21,13 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const dbRef = ref(getDatabase(app));
 
-export async function login() {
+export function login() {
   signInWithPopup(auth, provider).catch((err) => {
     console.log(err);
   });
 }
 
-export async function logout() {
+export function logout() {
   signOut(auth).catch((err) => console.log(err));
 }
 
