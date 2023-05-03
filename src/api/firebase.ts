@@ -8,7 +8,8 @@ import {
   signOut,
   User,
 } from 'firebase/auth';
-import { getDatabase, ref, get, child } from 'firebase/database';
+import { getDatabase, ref, get, set, child } from 'firebase/database';
+import uuidv4 from '../utils/uuidv4';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
@@ -47,5 +48,14 @@ async function adminUser(user: User) {
       return { ...user, isAdmin };
     }
     return user;
+  });
+}
+
+export async function addNewBook(additem: any, img_url: any) {
+  const id = uuidv4();
+  set(child(dbRef, `books/${id}`), {
+    ...additem,
+    id,
+    img_url,
   });
 }

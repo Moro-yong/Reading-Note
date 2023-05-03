@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Layout from './Layout';
 import Navigation from '../components/nav';
 import { imageUpload } from '../api/imageUpload';
+import { addNewBook } from '../api/firebase';
 
 export default function Admin() {
   const [additem, setAddItem] = useState({});
@@ -26,9 +27,16 @@ export default function Admin() {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault;
     img &&
-      imageUpload(img).then((url) => {
-        console.log(url);
-      });
+      imageUpload(img)
+        .then((url) => {
+          addNewBook(additem, url);
+          alert(`업로드 완료`);
+          location.reload();
+        })
+        .catch((error) => {
+          alert(`error => ${error}`);
+          location.reload();
+        });
   };
 
   return (
@@ -38,14 +46,14 @@ export default function Admin() {
         <section className="w-1/2 h-full my-10">
           <form className="flex flex-col my-2">
             <div className="flex items-center w-full my-2">
-              <label htmlFor="book_name" className="w-20">
+              <label htmlFor="book_title" className="w-20">
                 title
               </label>
               <input
                 type="text"
-                placeholder="Book Name"
-                name="book_name"
-                id="book_name"
+                placeholder="Book title"
+                name="book_title"
+                id="book_title"
                 required
                 onChange={handleChange}
                 className="bg-white border rounded-lg py-1 px-2 ml-4 grow"
@@ -82,7 +90,7 @@ export default function Admin() {
                 type="file"
                 accept="image/*"
                 name="book_img"
-                required
+                // required
                 onChange={handleChangeImage}
                 className="bg-white border rounded-lg py-1 px-2 w-full"
               />
